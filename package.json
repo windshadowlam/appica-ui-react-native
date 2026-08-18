@@ -1,0 +1,22 @@
+{
+  "name": "@appica/ui-react-native",
+  "version": "0.1.0",
+  "description": "React Native port of the Appica UI component library — faithful to the Appica Figma design system.",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-native": ">=0.72.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "react": "18.3.1",
+    "react-native": "0.74.0",
+    "typescript": "^5.4.0"
+  }
+}

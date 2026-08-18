@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Lockfile from the local typecheck-only install (not the shipped manifest)
+package-lock.json
+
+# Temporary backup of package.json used during local typechecking
+package.json.bak
+
+# Project memory / local data (not part of the published library)
+.workbuddy/
+
+# OS cruft
+.DS_Store
