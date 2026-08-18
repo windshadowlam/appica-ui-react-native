@@ -18,11 +18,12 @@ function getRange(page: number, total: number, sibling: number): (number | 'elli
   if (total <= totalNumbers) return Array.from({ length: total }, (_, i) => i + 1)
   const left = Math.max(page - sibling, 1)
   const right = Math.min(page + sibling, total)
-  const out: (number | 'ellipsis')[] = [1]
+  const out: (number | 'ellipsis')[] = []
+  if (left > 1) out.push(1)
   if (left > 2) out.push('ellipsis')
   for (let i = left; i <= right; i++) out.push(i)
   if (right < total - 1) out.push('ellipsis')
-  out.push(total)
+  if (right < total) out.push(total)
   return out
 }
 

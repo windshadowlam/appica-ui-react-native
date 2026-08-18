@@ -18,11 +18,17 @@ const libPath = path.resolve(__dirname, '..');
 const config = {
   watchFolders: [libPath],
   resolver: {
-    // The library lives in a sibling folder (../Appica-Native) and its own
-    // node_modules doesn't contain react-native / react / the community
-    // packages (they're peers, resolved from THIS project). Teach Metro to look
-    // here so the library's imports resolve to the single shared copy.
+    // The library lives in a sibling folder (../Appica-Native) and has its own
+    // node_modules (dev deps for typechecking). Force singleton packages to
+    // resolve from THIS project so Metro only bundles one copy of React/RN and
+    // the peer deps shared with the library.
     nodeModulesPaths: [path.resolve(__dirname, 'node_modules')],
+    extraNodeModules: {
+      react: path.resolve(__dirname, 'node_modules/react'),
+      'react-native': path.resolve(__dirname, 'node_modules/react-native'),
+      '@react-native-clipboard/clipboard': path.resolve(__dirname, 'node_modules/@react-native-clipboard/clipboard'),
+      '@react-native-community/slider': path.resolve(__dirname, 'node_modules/@react-native-community/slider'),
+    },
     // Transform the TS library; leave prebuilt node_modules (react-native core,
     // @react-native/*, the community slider/clipboard) untouched.
     transformIgnorePatterns: [
