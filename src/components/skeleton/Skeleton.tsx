@@ -1,13 +1,13 @@
 import * as React from 'react'
-import { View, Animated, Easing, type StyleProp } from 'react-native'
+import { View, Animated, Easing, type StyleProp, type DimensionValue } from 'react-native'
 import { useTheme } from '../../theme/theme'
 import { cn, type AnyStyle } from '../../utils/cn'
 
 export interface SkeletonProps {
   /** @default 'rect' */
   variant?: 'text' | 'rect' | 'circle'
-  width?: number | string
-  height?: number | string
+  width?: DimensionValue
+  height?: DimensionValue
   radius?: number
   style?: StyleProp<AnyStyle>
 }
@@ -40,8 +40,8 @@ function Skeleton({ variant = 'rect', width, height, radius, style }: SkeletonPr
   const resolvedRadius = radius ?? (variant === 'circle' ? 999 : variant === 'text' ? 6 : 8)
 
   const containerStyle: AnyStyle = {
-    width: resolvedWidth as number | string,
-    height: resolvedHeight as number | string,
+    width: resolvedWidth,
+    height: resolvedHeight,
     borderRadius: resolvedRadius,
     backgroundColor: theme.colors['background-strong'],
     overflow: 'hidden',

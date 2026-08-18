@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { View, Slider, type StyleProp } from 'react-native'
+import { View, type StyleProp } from 'react-native'
+import Slider from '@react-native-community/slider'
 import { useTheme } from '../../theme/theme'
 import { cn, type AnyStyle } from '../../utils/cn'
 
@@ -28,13 +29,13 @@ function ColorSlider({ value, onValueChange, hue, height = 16, style }: ColorSli
 
   return (
     <View style={cn({ width: '100%', height, borderRadius: height / 2, overflow: 'hidden' }, style)}>
-      <View style={{ position: 'absolute', inset: 0, flexDirection: 'row' }}>
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, flexDirection: 'row' }}>
         {stops.map((c, i) => (
           <View key={i} style={{ flex: 1, backgroundColor: c }} />
         ))}
       </View>
       <Slider
-        style={{ width: '100%', height: '100%' as unknown as number }}
+        style={{ width: '100%', height: '100%' }}
         value={value}
         minimumValue={0}
         maximumValue={1}

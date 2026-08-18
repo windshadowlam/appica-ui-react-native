@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Pressable, View, Text, Clipboard, type StyleProp } from 'react-native'
+import { Pressable, View, Text, type StyleProp } from 'react-native'
+import Clipboard from '@react-native-clipboard/clipboard'
 import { useTheme } from '../../theme/theme'
 import { cn, type AnyStyle } from '../../utils/cn'
 
@@ -15,7 +16,7 @@ function CopyButton({ text, size = 'md', style }: CopyButtonProps) {
   const [copied, setCopied] = React.useState(false)
 
   const copy = () => {
-    Clipboard?.setString?.(text)
+    Clipboard.setString(text)
     setCopied(true)
     setTimeout(() => setCopied(false), 1500)
   }

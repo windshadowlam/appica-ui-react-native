@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Slider as RNSlider, type StyleProp } from 'react-native'
+import { type StyleProp } from 'react-native'
+import RNSlider from '@react-native-community/slider'
 import { useTheme } from '../../theme/theme'
 import { cn, type AnyStyle } from '../../utils/cn'
 import { useControllableState } from '../../hooks/use-controllable-state'

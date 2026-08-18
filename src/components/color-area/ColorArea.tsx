@@ -68,8 +68,8 @@ function ColorArea({ hue, value, defaultValue, onValueChange, size = 200, style 
       {...pan.panHandlers}
       style={cn({ width: size, height: size, borderRadius: 12, overflow: 'hidden', alignSelf: 'flex-start' }, style)}
     >
-      <View style={{ position: 'absolute', inset: 0, backgroundColor: hsl(hue, 1, 0.5) }} />
-      <View style={{ position: 'absolute', inset: 0, backgroundColor: '#fff', opacity: 0.5 }} />
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: hsl(hue, 1, 0.5) }} />
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: '#fff', opacity: 0.5 }} />
       <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '55%', backgroundColor: '#000', opacity: 0.55 }} />
       <View style={{ position: 'absolute', width: 18, height: 18, borderRadius: 9, borderWidth: 2, borderColor: '#fff', backgroundColor: 'transparent', left: thumbX - 9, top: thumbY - 9, shadowColor: '#000', shadowOpacity: 0.3, shadowRadius: 3 }} />
     </View>

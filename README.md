@@ -155,14 +155,14 @@ import type { ButtonProps, ButtonVariant } from '@appica/ui-react-native'
 
 ### Local typechecking
 
-React Native's full type package isn't required to typecheck this repo — a minimal ambient stub lives at `src/types/react-native.d.ts` and a relaxed config at `tsconfig.check.json`:
+The library typechecks cleanly with the **real React Native type package** (`react-native` is in `devDependencies`). The old ambient stub (`src/types/react-native.d.ts`) and the relaxed `tsconfig.check.json` were removed — the standard `tsconfig.json` is used everywhere:
 
 ```bash
-npm install            # installs typescript + @types/react used by the check config
-npx tsc --noEmit -p tsconfig.check.json
+npm install            # installs react-native + typescript + @types/react
+npm run typecheck     # tsc --noEmit -p tsconfig.json  (0 errors)
 ```
 
-The shipped `npm run typecheck` uses the standard `tsconfig.json` (assumes `react-native` types are present in a real app).
+`AnyStyle` (`src/utils/cn.ts`) is typed as `ViewStyle | TextStyle` (strict, not `any`).
 
 ---
 
@@ -178,10 +178,16 @@ Appica-Native/
 │  ├─ theme/                 # ThemeProvider, tokens, token types
 │  ├─ utils/                 # cn, cva
 │  ├─ hooks/                 # useControllableState, etc.
-│  └─ types/react-native.d.ts# ambient stub for local typechecking
+├─ sample/                   # React Native demo app (consumes the library)
+│  └─ README.md              # install + iOS/Android native build steps
 ├─ tsconfig.json             # standard (app) config
-└─ tsconfig.check.json       # relaxed local typecheck config
 ```
+
+---
+
+## Demo app (native builds)
+
+`sample/` is a React Native 0.75 app that imports the library via a local `file:..` dependency and demos every component. It builds for **iOS** (`xcodebuild`) and **Android** (`gradlew`), with the gotchas (Hermes `NODE_OPTIONS`, glog/Xcode 26, JDK 17 for Gradle) documented in [`sample/README.md`](./sample/README.md).
 
 ---
 

@@ -77,7 +77,7 @@ function Toggle({
       accessibilityState={{ selected: isPressed }}
       disabled={disabled}
       onPress={activate}
-      style={({ pr }) => cn(container, pr && { opacity: 0.7 }, style)}
+      style={({ pressed }) => cn(container, pressed && { opacity: 0.7 }, style)}
     >
       {children != null ? (
         typeof children === 'string' ? (

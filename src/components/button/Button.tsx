@@ -95,7 +95,7 @@ function Button({
         setPressed(false)
         onPressOut?.(e)
       }}
-      style={({ hovered }) =>
+      style={() =>
         cn(
           baseStyles,
           // rounded corners collapse when joined inside a ButtonGroup
@@ -111,8 +111,10 @@ function Button({
         style={[
           {
             position: 'absolute',
-            inset: 0,
-            borderRadius: 'inherit',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
             backgroundColor: PRESS_OVERLAY[resolvedVariant],
             opacity: pressed ? 1 : 0,
           },
